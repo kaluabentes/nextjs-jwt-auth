@@ -5,17 +5,19 @@ import {
   FormLabel,
   Heading,
   Input,
-  Link,
+  Link as ChakraLink,
   Text,
 } from "@chakra-ui/react"
+import NextLink from "next/link"
 
-import Auth from "@/components/shared/Auth"
+import AuthLayout from "@/components/auth/AuthLayout"
+import Link from "@/components/shared/Link"
 
 const Signup = () => {
   const { t } = useTranslation()
 
   return (
-    <Auth>
+    <AuthLayout>
       <Heading size="2xl" marginBottom={10} fontWeight="semibold">
         {t("signup")}
       </Heading>
@@ -39,7 +41,7 @@ const Signup = () => {
         <FormLabel>{t("repeatPassword")}</FormLabel>
         <Input type="email" />
       </FormControl>
-      <Text color="gray.600" marginBottom={9} fontSize="sm">
+      <Text color="gray.600" marginBottom={9} fontSize="xs">
         <Trans
           i18nKey="signupPolicyText"
           values={{
@@ -47,15 +49,24 @@ const Signup = () => {
             privacyPolicy: t("privacyPolicy"),
           }}
           components={[
-            <Link color="brand.500" href="#" />,
-            <Link color="brand.500" href="#" />,
+            <ChakraLink color="brand.500" href="#" />,
+            <ChakraLink color="brand.500" href="#" />,
           ]}
         />
       </Text>
-      <Button colorScheme="brand" width="full">
+      <Button colorScheme="brand" width="full" marginBottom={9}>
         {t("continue")}
       </Button>
-    </Auth>
+      <Text color="gray.600" fontSize="sm" textAlign="center">
+        <Trans
+          i18nKey="existingUserText"
+          values={{
+            signin: t("signin"),
+          }}
+          components={[<Link path="/auth/signin" />]}
+        />
+      </Text>
+    </AuthLayout>
   )
 }
 

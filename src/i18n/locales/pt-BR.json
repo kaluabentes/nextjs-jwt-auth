@@ -10,6 +10,10 @@
     "termsAndConditions": "Termos e Condições",
     "privacyPolicy": "Política de Privacidade",
     "confirm": "Confirmar",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "signin": "Entrar",
+    "forgotPassword": "Esqueceu sua senha?",
+    "newUserText": "Ainda não possui uma conta? <0>{{signup}}</0>",
+    "existingUserText": "Já possui uma conta? <0>{{signin}}</0>"
   }
 }

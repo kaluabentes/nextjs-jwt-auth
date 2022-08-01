@@ -1,11 +1,11 @@
-import { Box, Container, Flex } from "@chakra-ui/react"
+import { Box, Container, Flex, useColorModeValue } from "@chakra-ui/react"
 import { ReactElement, ReactNode } from "react"
 
-interface AuthProps {
+interface AuthLayoutProps {
   children: ReactNode
 }
 
-const Auth = ({ children }: AuthProps) => (
+const AuthLayout = ({ children }: AuthLayoutProps) => (
   <Flex
     justifyContent="center"
     paddingTop={{ base: 0, sm: 10 }}
@@ -13,14 +13,16 @@ const Auth = ({ children }: AuthProps) => (
   >
     <Box
       height={{ base: "100vh", sm: "initial" }}
-      width={{ base: "100vw", sm: "initial" }}
+      width="100%"
       maxWidth="500px"
       backgroundColor="white"
       padding={{ base: 5, sm: 10 }}
+      boxShadow={{ base: "none", sm: useColorModeValue("md", "md-dark") }}
+      borderRadius={{ base: "none", sm: "xl" }}
     >
       {children}
     </Box>
   </Flex>
 )
 
-export default Auth
+export default AuthLayout
