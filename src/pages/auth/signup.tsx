@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react"
 import NextLink from "next/link"
 
-import AuthLayout from "@/components/auth/AuthLayout"
+import AuthLayout from "@/components/layouts/AuthLayout"
 import Link from "@/components/shared/Link"
 
 const Signup = () => {

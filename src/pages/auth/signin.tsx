@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react"
 
-import AuthLayout from "@/components/auth/AuthLayout"
+import AuthLayout from "@/components/layouts/AuthLayout"
 import Link from "@/components/shared/Link"
 
 const Signup = () => {
