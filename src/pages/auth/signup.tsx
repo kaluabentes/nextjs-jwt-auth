@@ -16,7 +16,7 @@ const Signup = () => {
 
   return (
     <Auth>
-      <Heading size="2xl" marginBottom={10}>
+      <Heading size="2xl" marginBottom={10} fontWeight="semibold">
         {t("signup")}
       </Heading>
       <FormControl marginBottom={4}>

@@ -5,6 +5,13 @@ const theme = extendTheme({
     heading: `'Poppins', sans-serif`,
     body: `'Poppins', sans-serif`,
   },
+  styles: {
+    global: {
+      "html, body": {
+        background: "gray.100",
+      },
+    },
+  },
   colors: {
     brand: {
       "50": "#E8EAFC",
