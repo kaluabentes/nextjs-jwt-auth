@@ -55,7 +55,7 @@ const Signup = () => {
         />
       </Text>
       <Button colorScheme="brand" width="full" marginBottom={9}>
-        {t("continue")}
+        {t("signup")}
       </Button>
       <Text color="gray.600" fontSize="sm" textAlign="center">
         <Trans

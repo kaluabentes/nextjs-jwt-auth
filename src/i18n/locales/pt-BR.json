@@ -1,19 +1,20 @@
 {
   "translations": {
-    "signup": "Cadastrar",
-    "yourName": "Seu nome",
-    "storeName": "Nome da empresa",
-    "email": "Email",
-    "password": "Password",
-    "repeatPassword": "Repita o password",
-    "signupPolicyText": "Após cadastrar-se, você estará concordando com os nossos <0>{{termsAndConditions}}</0> e <1>{{privacyPolicy}}</1>",
-    "termsAndConditions": "Termos e Condições",
-    "privacyPolicy": "Política de Privacidade",
     "confirm": "Confirmar",
     "continue": "Continuar",
-    "signin": "Entrar",
+    "email": "Email",
+    "existingUserText": "Já possui uma conta? <0>{{signin}}</0>",
     "forgotPassword": "Esqueceu sua senha?",
+    "forgotPasswordText": "Não se preocupe! Acontece. Por favor digite o email associado a sua conta.",
     "newUserText": "Ainda não possui uma conta? <0>{{signup}}</0>",
-    "existingUserText": "Já possui uma conta? <0>{{signin}}</0>"
+    "password": "Password",
+    "privacyPolicy": "Política de Privacidade",
+    "repeatPassword": "Repita o password",
+    "signin": "Entrar",
+    "signup": "Cadastrar",
+    "signupPolicyText": "Após cadastrar-se, você estará concordando com os nossos <0>{{termsAndConditions}}</0> e <1>{{privacyPolicy}}</1>",
+    "storeName": "Nome da empresa",
+    "termsAndConditions": "Termos e Condições",
+    "yourName": "Seu nome"
   }
 }
