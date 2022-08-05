@@ -28,7 +28,7 @@ const ForgotPassword = () => {
         marginBottom={9}
       />
       <Heading size="2xl" marginBottom={6} fontWeight="semibold">
-        {t("signin")}
+        {t("forgotPassword")}
       </Heading>
       <Text color="gray.600" fontSize="sm" marginBottom={9}>
         {t("forgotPasswordText")}
@@ -38,7 +38,7 @@ const ForgotPassword = () => {
         <Input type="email" />
       </FormControl>
       <Button colorScheme="brand" width="full">
-        {t("signin")}
+        {t("continue")}
       </Button>
     </AuthLayout>
   )

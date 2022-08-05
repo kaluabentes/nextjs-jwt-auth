@@ -1,4 +1,10 @@
-import { Box, Container, Flex, useColorModeValue } from "@chakra-ui/react"
+import {
+  Box,
+  Container,
+  Flex,
+  Switch,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import { ReactElement, ReactNode } from "react"
 
 interface AuthLayoutProps {

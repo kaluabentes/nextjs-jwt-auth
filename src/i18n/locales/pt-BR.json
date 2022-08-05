@@ -15,6 +15,9 @@
     "signupPolicyText": "Após cadastrar-se, você estará concordando com os nossos <0>{{termsAndConditions}}</0> e <1>{{privacyPolicy}}</1>",
     "storeName": "Nome da empresa",
     "termsAndConditions": "Termos e Condições",
-    "yourName": "Seu nome"
+    "yourName": "Seu nome",
+    "profile": "Perfil",
+    "name": "Nome",
+    "role": "Atribuição"
   }
 }
