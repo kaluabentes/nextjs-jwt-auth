@@ -1,19 +1,22 @@
 import { extendTheme } from "@chakra-ui/react"
+import type { StyleFunctionProps } from "@chakra-ui/styled-system"
+import { mode } from "@chakra-ui/theme-tools"
 
 const theme = extendTheme({
   config: {
-    initialColorMode: "dark",
+    initialColorMode: "light",
+    useSystemColorMode: false,
   },
   fonts: {
     heading: `'Poppins', sans-serif`,
     body: `'Poppins', sans-serif`,
   },
   styles: {
-    global: {
-      "html, body": {
-        background: "gray.100",
+    global: (props: StyleFunctionProps) => ({
+      body: {
+        bg: mode("gray.100", "gray.900")(props),
       },
-    },
+    }),
   },
   colors: {
     brand: {

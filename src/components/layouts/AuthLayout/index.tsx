@@ -21,7 +21,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => (
       height={{ base: "100vh", sm: "initial" }}
       width="100%"
       maxWidth="500px"
-      backgroundColor="white"
+      backgroundColor={useColorModeValue("white", "gray.800")}
       padding={{ base: 5, sm: 10 }}
       boxShadow={{ base: "none", sm: useColorModeValue("md", "md-dark") }}
       borderRadius={{ base: "none", sm: "xl" }}
