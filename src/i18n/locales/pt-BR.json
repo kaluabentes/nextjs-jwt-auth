@@ -21,6 +21,8 @@
     "role": "Atribuição",
     "passwordMatchMessage": "As senhas devem ser iguais",
     "requiredMessage": "Este campo é obrigatório",
-    "emailInUse": "Endereço de email já está sendo utilizado"
+    "emailInUse": "Endereço de email já está sendo utilizado",
+    "USER": "Usuário",
+    "ADMIN": "Administrador"
   }
 }

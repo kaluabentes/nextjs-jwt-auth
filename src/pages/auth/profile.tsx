@@ -1,29 +1,27 @@
+import { useEffect } from "react"
 import { Trans, useTranslation } from "react-i18next"
 import {
-  Box,
-  Button,
-  Flex,
-  FormControl,
-  FormLabel,
   Heading,
-  Input,
-  Text,
   Table,
-  Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
+  Badge,
   Td,
-  TableCaption,
   TableContainer,
 } from "@chakra-ui/react"
 
 import AuthLayout from "@/components/layouts/AuthLayout"
 import Link from "@/components/shared/Link"
+import useProfile from "@/hooks/auth/useProfile"
 
 const Profile = () => {
   const { t } = useTranslation()
+  const { fetchProfile, profile, isLoadingProfile } = useProfile()
+
+  useEffect(() => {
+    fetchProfile()
+  }, [])
 
   return (
     <AuthLayout>
@@ -34,16 +32,18 @@ const Profile = () => {
         <Table variant="simple">
           <Tbody>
             <Tr>
-              <Th>{t("name")}</Th>
-              <Td>Kaluã Bentes</Td>
+              <Td fontWeight="600">{t("name")}</Td>
+              <Td>{profile.name}</Td>
             </Tr>
             <Tr>
-              <Th>{t("email")}</Th>
-              <Td>centimetres (cm)</Td>
+              <Td fontWeight="600">{t("email")}</Td>
+              <Td>{profile.email}</Td>
             </Tr>
             <Tr>
-              <Th>{t("role")}</Th>
-              <Td>Admin</Td>
+              <Td fontWeight="600">{t("role")}</Td>
+              <Td>
+                <Badge>{t(profile.role)}</Badge>
+              </Td>
             </Tr>
           </Tbody>
         </Table>
