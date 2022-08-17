@@ -11,7 +11,7 @@ const useProfile = () => {
   const [isLoadingProfile, setIsLoadingProfile] = useState(false)
   const toast = useToast()
 
-  const fetchProfile = useCallback(async () => {
+  const fetchProfile = async () => {
     try {
       setIsLoadingProfile(true)
       const profile = await axios.get("/auth/profile")
@@ -26,7 +26,7 @@ const useProfile = () => {
     } finally {
       setIsLoadingProfile(false)
     }
-  }, [])
+  }
 
   return { profile, fetchProfile, isLoadingProfile }
 }

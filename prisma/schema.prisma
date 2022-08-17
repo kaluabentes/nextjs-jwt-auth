@@ -29,9 +29,17 @@ model User {
   role      Role     @default(USER)
   store Store @relation(fields: [storeId], references: [id])
   storeId Int
+  refreshTokens UserRefreshToken[]
 }
 
 enum Role {
   USER
   ADMIN
+}
+
+model UserRefreshToken {
+  id        Int      @id @default(autoincrement())
+  token String
+  user User @relation(fields: [userId], references: [id])
+  userId Int
 }

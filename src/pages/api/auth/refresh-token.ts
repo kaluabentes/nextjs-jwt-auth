@@ -1,18 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from "next"
-import * as Yup from "yup"
-import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import { v4 as uuidv4 } from "uuid"
 import Cookies from "cookies"
 
 import prisma from "@/lib/prisma"
+import verifyAuth from "@/utils/auth/verifyAuth"
 
 const JWT_SECRET = process.env.JWT_SECRET!
-
-const signinFormValidationSchema = Yup.object({
-  email: Yup.string().email().required(),
-  password: Yup.string().required(),
-})
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {
@@ -20,50 +14,49 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    await signinFormValidationSchema.validate(req.body)
+    const token = req.cookies["refreshToken"]
 
-    const user = await prisma.user.findUnique({
+    const refreshToken = await prisma.userRefreshToken.findFirst({
       where: {
-        email: req.body.email,
+        token,
+      },
+      include: {
+        user: {
+          include: {
+            store: true,
+          },
+        },
       },
     })
 
-    if (!user) {
-      return res.status(400).json({
-        error: "USER_NOT_EXIST",
-      })
+    if (!refreshToken) {
+      return res.status(400).send({ message: "invalidToken" })
     }
 
-    const validPassword = await bcrypt.compare(req.body.password, user.password)
-
-    if (!validPassword) {
-      return res.status(400).json({
-        error: "INVALID_PASSWORD",
-      })
-    }
-
+    const { user } = refreshToken
+    const { store } = user
     const payload = {
       sub: user.id,
       name: user.name,
       email: user.email,
       role: user.role,
-      storeName: req.body.storeName,
+      storeName: store.name,
     }
 
-    const token = jwt.sign(payload, JWT_SECRET, {
+    const jwtToken = jwt.sign(payload, JWT_SECRET, {
       expiresIn: "15m",
     })
 
     /* Refresh token */
-    const refreshToken = uuidv4()
+    const newRefreshToken = uuidv4()
     const cookies = Cookies(req, res)
-    cookies.set("refreshToken", refreshToken, {
+    cookies.set("refreshToken", newRefreshToken, {
       httpOnly: true,
       sameSite: "lax",
     })
     await prisma.userRefreshToken.create({
       data: {
-        token: refreshToken,
+        token: newRefreshToken,
         user: {
           connect: {
             id: user.id,
@@ -71,11 +64,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
       },
     })
+    await prisma.userRefreshToken.delete({
+      where: {
+        id: refreshToken.id,
+      },
+    })
 
     res.json({
-      token,
+      token: jwtToken,
     })
   } catch (error: any) {
-    res.status(400).json(error.message)
+    console.log(error.message)
+    return res.status(400).send(error.message)
   }
 }

@@ -2,6 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next"
 import * as Yup from "yup"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import { v4 as uuidv4 } from "uuid"
+import Cookies from "cookies"
 
 import prisma from "@/lib/prisma"
 
@@ -60,6 +62,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
     const token = jwt.sign(payload, JWT_SECRET, {
       expiresIn: "15m",
+    })
+
+    /* Refresh token */
+    const refreshToken = uuidv4()
+    const cookies = Cookies(req, res)
+    cookies.set("refreshToken", refreshToken, {
+      httpOnly: true,
+      sameSite: "lax",
+    })
+    await prisma.userRefreshToken.create({
+      data: {
+        token: refreshToken,
+        user: {
+          connect: {
+            id: user.id,
+          },
+        },
+      },
     })
 
     res.json({

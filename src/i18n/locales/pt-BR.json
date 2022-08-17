@@ -18,7 +18,7 @@
     "yourName": "Seu nome",
     "profile": "Perfil",
     "name": "Nome",
-    "role": "Atribuição",
+    "role": "Permissão",
     "passwordMatchMessage": "As senhas devem ser iguais",
     "requiredMessage": "Este campo é obrigatório",
     "emailInUse": "Endereço de email já está sendo utilizado",

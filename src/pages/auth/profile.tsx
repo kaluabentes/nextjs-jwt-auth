@@ -9,11 +9,15 @@ import {
   Badge,
   Td,
   TableContainer,
+  Flex,
+  Box,
+  Text,
 } from "@chakra-ui/react"
 
 import AuthLayout from "@/components/layouts/AuthLayout"
-import Link from "@/components/shared/Link"
 import useProfile from "@/hooks/auth/useProfile"
+import DataItem from "@/components/shared/DataItem"
+import DataItemLoader from "@/components/shared/DataItem/DataItemLoader"
 
 const Profile = () => {
   const { t } = useTranslation()
@@ -28,26 +32,22 @@ const Profile = () => {
       <Heading size="2xl" marginBottom={10} fontWeight="semibold">
         {t("profile")}
       </Heading>
-      <TableContainer>
-        <Table variant="simple">
-          <Tbody>
-            <Tr>
-              <Td fontWeight="600">{t("name")}</Td>
-              <Td>{profile.name}</Td>
-            </Tr>
-            <Tr>
-              <Td fontWeight="600">{t("email")}</Td>
-              <Td>{profile.email}</Td>
-            </Tr>
-            <Tr>
-              <Td fontWeight="600">{t("role")}</Td>
-              <Td>
-                <Badge>{t(profile.role)}</Badge>
-              </Td>
-            </Tr>
-          </Tbody>
-        </Table>
-      </TableContainer>
+      {isLoadingProfile ? (
+        <>
+          <DataItemLoader />
+          <DataItemLoader />
+          <DataItemLoader />
+        </>
+      ) : (
+        <>
+          <DataItem label={t("name")} value={profile.name} />
+          <DataItem label={t("email")} value={profile.email} />
+          <DataItem
+            label={t("role")}
+            value={<Badge>{t(profile.role)}</Badge>}
+          />
+        </>
+      )}
     </AuthLayout>
   )
 }
