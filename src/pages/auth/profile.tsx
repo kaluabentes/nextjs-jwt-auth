@@ -15,17 +15,13 @@ import {
 } from "@chakra-ui/react"
 
 import AuthLayout from "@/components/layouts/AuthLayout"
-import useProfile from "@/hooks/auth/useProfile"
 import DataItem from "@/components/shared/DataItem"
 import DataItemLoader from "@/components/shared/DataItem/DataItemLoader"
+import useAuth from "@/hooks/auth/useAuth"
 
 const Profile = () => {
   const { t } = useTranslation()
-  const { fetchProfile, profile, isLoadingProfile } = useProfile()
-
-  useEffect(() => {
-    fetchProfile()
-  }, [])
+  const { profile, isLoadingProfile } = useAuth()
 
   return (
     <AuthLayout>

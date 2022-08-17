@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     })
 
     if (!refreshToken) {
-      return res.status(400).send({ message: "invalidToken" })
+      return res.status(401).send({ message: "invalidToken" })
     }
 
     const { user } = refreshToken
