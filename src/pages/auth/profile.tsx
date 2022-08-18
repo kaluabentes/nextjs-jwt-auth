@@ -12,6 +12,7 @@ import {
   Flex,
   Box,
   Text,
+  Button,
 } from "@chakra-ui/react"
 
 import AuthLayout from "@/components/layouts/AuthLayout"
@@ -21,7 +22,7 @@ import useAuth from "@/hooks/auth/useAuth"
 
 const Profile = () => {
   const { t } = useTranslation()
-  const { profile, isLoadingProfile } = useAuth()
+  const { profile, isLoadingProfile, logout, isLoggingOut } = useAuth()
 
   return (
     <AuthLayout>
@@ -44,6 +45,9 @@ const Profile = () => {
           />
         </>
       )}
+      <Button onClick={logout} isLoading={isLoggingOut}>
+        Logout
+      </Button>
     </AuthLayout>
   )
 }

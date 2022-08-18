@@ -50,10 +50,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     /* Refresh token */
     const newRefreshToken = uuidv4()
     const cookies = Cookies(req, res)
+
     cookies.set("refreshToken", newRefreshToken, {
       httpOnly: true,
       sameSite: "lax",
     })
+
     await prisma.userRefreshToken.create({
       data: {
         token: newRefreshToken,
@@ -64,6 +66,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
       },
     })
+
     await prisma.userRefreshToken.delete({
       where: {
         id: refreshToken.id,
