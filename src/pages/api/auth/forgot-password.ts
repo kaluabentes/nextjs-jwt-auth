@@ -65,7 +65,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       from: "no-reply@vexmo.com.br",
       subject: `Cashtron - Alterar senha`,
       html: `
-        <h3>Oi, siga as instruções abaixo:</h3>
         <p>Para criar uma nova senha <a href="${process.env.CLIENT_URL}/auth/change-password?token=${token}">clique aqui</a></p>
       `,
     }
