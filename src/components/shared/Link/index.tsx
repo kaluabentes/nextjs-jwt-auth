@@ -1,5 +1,5 @@
 import NextLink from "next/link"
-import { Link as ChackraLink } from "@chakra-ui/react"
+import { Link as ChackraLink, useColorModeValue } from "@chakra-ui/react"
 
 import { BaseProps } from "@/models/BaseProps"
 
@@ -9,7 +9,10 @@ interface LinkProps extends BaseProps {
 
 const Link = ({ children, path }: LinkProps) => (
   <NextLink href={path} passHref>
-    <ChackraLink color="brand.500" fontWeight="semibold">
+    <ChackraLink
+      color={useColorModeValue("brand.500", "brand.300")}
+      fontWeight="semibold"
+    >
       {children}
     </ChackraLink>
   </NextLink>

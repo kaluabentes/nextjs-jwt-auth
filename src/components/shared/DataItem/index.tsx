@@ -1,4 +1,11 @@
-import { Box, Flex, Skeleton, Text } from "@chakra-ui/react"
+import {
+  Box,
+  Flex,
+  Skeleton,
+  Text,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react"
 import { ReactNode } from "react"
 
 interface DataItemProps {
@@ -8,7 +15,10 @@ interface DataItemProps {
 
 const DataItem = ({ label, value }: DataItemProps) => (
   <Flex
-    borderBottom="1px solid rgba(0, 0, 0, 0.1)"
+    borderBottom={useColorModeValue(
+      "1px solid rgba(0, 0, 0, 0.1)",
+      "1px solid rgba(219, 218, 218, 0.1)"
+    )}
     paddingBottom={4}
     paddingTop={4}
     _last={{ borderBottom: "none" }}

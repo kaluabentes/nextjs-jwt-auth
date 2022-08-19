@@ -8,6 +8,7 @@ import {
   IconButton,
   Input,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import { useFormik } from "formik"
@@ -49,7 +50,10 @@ const ForgotPassword = () => {
         <Heading size="2xl" marginBottom={6} fontWeight="semibold">
           {t("forgotPassword")}
         </Heading>
-        <Text color="gray.600" marginBottom={9}>
+        <Text
+          color={useColorModeValue("gray.600", "gray.500")}
+          marginBottom={9}
+        >
           {t("forgotPasswordText")}
         </Text>
         {isForgotSuccessful ? (
@@ -81,9 +85,9 @@ const ForgotPassword = () => {
             </FormControl>
             <Button
               isLoading={isForgotPasswordLoading}
-              colorScheme="brand"
               width="full"
               type="submit"
+              variant="brand"
             >
               {t("continue")}
             </Button>

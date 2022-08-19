@@ -3,8 +3,21 @@ import type { StyleFunctionProps } from "@chakra-ui/styled-system"
 import { mode } from "@chakra-ui/theme-tools"
 
 const theme = extendTheme({
+  components: {
+    Button: {
+      variants: {
+        brand: (props: StyleFunctionProps) => ({
+          backgroundColor: mode("brand.500", "brand.500")(props),
+          color: "white",
+          ":hover": {
+            backgroundColor: mode("brand.600", "brand.400")(props),
+          },
+        }),
+      },
+    },
+  },
   config: {
-    initialColorMode: "light",
+    initialColorMode: "dark",
     useSystemColorMode: false,
   },
   fonts: {

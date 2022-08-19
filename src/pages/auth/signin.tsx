@@ -8,6 +8,7 @@ import {
   Heading,
   Input,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import { useFormik } from "formik"
 import * as Yup from "yup"
@@ -74,14 +75,17 @@ const Signin = () => {
         </Flex>
         <Button
           isLoading={isSigninLoading}
-          colorScheme="brand"
+          variant="brand"
           width="full"
           marginBottom={9}
           type="submit"
         >
           {t("signin")}
         </Button>
-        <Text color="gray.600" textAlign="center">
+        <Text
+          color={useColorModeValue("gray.600", "gray.500")}
+          textAlign="center"
+        >
           <Trans
             i18nKey="newUserText"
             values={{

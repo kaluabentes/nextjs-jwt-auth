@@ -8,6 +8,7 @@ import {
   Input,
   Link as ChakraLink,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import { useFormik } from "formik"
 import * as Yup from "yup"
@@ -122,7 +123,11 @@ const Signup = () => {
           />
           <FormErrorMessage>{formik.errors.repeatPassword}</FormErrorMessage>
         </FormControl>
-        <Text color="gray.600" marginBottom={9} fontSize="sm">
+        <Text
+          color={useColorModeValue("gray.600", "gray.500")}
+          marginBottom={9}
+          fontSize="sm"
+        >
           <Trans
             i18nKey="signupPolicyText"
             values={{
@@ -130,21 +135,30 @@ const Signup = () => {
               privacyPolicy: t("privacyPolicy"),
             }}
             components={[
-              <ChakraLink color="brand.500" href="#" />,
-              <ChakraLink color="brand.500" href="#" />,
+              <ChakraLink
+                color={useColorModeValue("brand.500", "brand.300")}
+                href="#"
+              />,
+              <ChakraLink
+                color={useColorModeValue("brand.500", "brand.300")}
+                href="#"
+              />,
             ]}
           />
         </Text>
         <Button
           isLoading={isSignupLoading}
-          colorScheme="brand"
+          variant="brand"
           width="full"
           marginBottom={9}
           type="submit"
         >
           {t("signup")}
         </Button>
-        <Text color="gray.600" textAlign="center">
+        <Text
+          color={useColorModeValue("gray.600", "gray.500")}
+          textAlign="center"
+        >
           <Trans
             i18nKey="existingUserText"
             values={{
