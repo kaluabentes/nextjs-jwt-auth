@@ -68,7 +68,7 @@ const Signin = () => {
           <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
         </FormControl>
         <Flex justifyContent="flex-end" marginBottom={6}>
-          <Text fontSize="sm">
+          <Text>
             <Link path="/auth/forgot-password">{t("forgotPassword")}</Link>
           </Text>
         </Flex>
@@ -81,7 +81,7 @@ const Signin = () => {
         >
           {t("signin")}
         </Button>
-        <Text color="gray.600" fontSize="sm" textAlign="center">
+        <Text color="gray.600" textAlign="center">
           <Trans
             i18nKey="newUserText"
             values={{

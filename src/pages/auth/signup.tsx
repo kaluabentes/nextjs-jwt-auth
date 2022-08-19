@@ -122,7 +122,7 @@ const Signup = () => {
           />
           <FormErrorMessage>{formik.errors.repeatPassword}</FormErrorMessage>
         </FormControl>
-        <Text color="gray.600" marginBottom={9} fontSize="xs">
+        <Text color="gray.600" marginBottom={9} fontSize="sm">
           <Trans
             i18nKey="signupPolicyText"
             values={{
@@ -144,7 +144,7 @@ const Signup = () => {
         >
           {t("signup")}
         </Button>
-        <Text color="gray.600" fontSize="sm" textAlign="center">
+        <Text color="gray.600" textAlign="center">
           <Trans
             i18nKey="existingUserText"
             values={{
