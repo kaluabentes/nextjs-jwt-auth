@@ -23,6 +23,7 @@
     "requiredMessage": "Este campo é obrigatório",
     "emailInUse": "Endereço de email já está sendo utilizado",
     "USER": "Usuário",
-    "ADMIN": "Administrador"
+    "ADMIN": "Administrador",
+    "forgotPasswordEmailSent": "Um email de alteração de senha foi enviado para <0>{{email}}</0>"
   }
 }

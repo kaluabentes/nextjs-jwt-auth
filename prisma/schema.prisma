@@ -30,6 +30,7 @@ model User {
   store Store @relation(fields: [storeId], references: [id])
   storeId Int
   refreshTokens UserRefreshToken[]
+  changePasswordTokens UserChangePasswordToken[]
 }
 
 enum Role {
@@ -38,6 +39,13 @@ enum Role {
 }
 
 model UserRefreshToken {
+  id        Int      @id @default(autoincrement())
+  token String
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+}
+
+model UserChangePasswordToken {
   id        Int      @id @default(autoincrement())
   token String
   user User @relation(fields: [userId], references: [id])
