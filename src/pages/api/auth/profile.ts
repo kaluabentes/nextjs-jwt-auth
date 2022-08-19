@@ -8,12 +8,14 @@ const JWT_SECRET = process.env.JWT_SECRET!
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "GET") {
-    return res.status(405).send("Method not allowed")
+    return res.status(405).send({
+      error: "methodNotAllowed",
+    })
   }
 
   if (!req.headers["authorization"]) {
     return res.status(401).send({
-      error: "missing token",
+      error: "missingToken",
     })
   }
 

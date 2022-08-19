@@ -18,7 +18,9 @@ const forgotPasswordSchema = Yup.object({
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {
-    return res.status(405).send("Method not allowed")
+    return res.status(405).send({
+      error: "methodNotAllowed",
+    })
   }
 
   try {
@@ -32,7 +34,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (!user) {
       return res.status(400).send({
-        message: "userNotFound",
+        error: "userNotFound",
       })
     }
 
@@ -59,7 +61,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     })
 
     const msg = {
-      to: "kaluanbentes@gmail.com",
+      to: req.body.email,
       from: "no-reply@vexmo.com.br",
       subject: `Cashtron - Alterar senha`,
       html: `

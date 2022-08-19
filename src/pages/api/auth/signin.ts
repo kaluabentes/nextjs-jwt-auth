@@ -16,7 +16,9 @@ const signinFormValidationSchema = Yup.object({
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method !== "POST") {
-    return res.status(405).send("Method not allowed")
+    return res.status(405).send({
+      error: "methodNotAllowed",
+    })
   }
 
   try {
@@ -30,7 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (!user) {
       return res.status(400).json({
-        error: "USER_NOT_EXIST",
+        error: "userNotFound",
       })
     }
 
@@ -38,7 +40,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (!validPassword) {
       return res.status(400).json({
-        error: "INVALID_PASSWORD",
+        error: "invalidPassword",
       })
     }
 

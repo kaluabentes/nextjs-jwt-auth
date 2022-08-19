@@ -44,11 +44,7 @@ const Signup = () => {
       repeatPassword: "",
     },
     validationSchema: signupValidationSchema,
-    onSubmit: async (values) => {
-      const token = await signup(values)
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-      router.push("/auth/profile")
-    },
+    onSubmit: signup,
   })
 
   return (

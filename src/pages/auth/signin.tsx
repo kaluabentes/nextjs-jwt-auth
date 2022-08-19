@@ -1,6 +1,5 @@
 import { Trans, useTranslation } from "react-i18next"
 import {
-  Box,
   Button,
   Flex,
   FormControl,
@@ -16,13 +15,10 @@ import * as Yup from "yup"
 import AuthLayout from "@/components/layouts/AuthLayout"
 import Link from "@/components/shared/Link"
 import useSignin from "@/hooks/auth/useSignin"
-import { useRouter } from "next/router"
-import axios from "@/lib/axios"
 
 const Signin = () => {
   const { t } = useTranslation()
   const { signin, isSigninLoading } = useSignin()
-  const router = useRouter()
 
   const signinValidationSchema = Yup.object({
     email: Yup.string().email().required(t("requiredMessage")),
@@ -35,11 +31,7 @@ const Signin = () => {
       password: "",
     },
     validationSchema: signinValidationSchema,
-    onSubmit: async (values) => {
-      const token = await signin(values)
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-      router.push("/auth/profile")
-    },
+    onSubmit: signin,
   })
 
   return (

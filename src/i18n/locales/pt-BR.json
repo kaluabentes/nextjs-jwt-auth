@@ -24,6 +24,10 @@
     "emailInUse": "Endereço de email já está sendo utilizado",
     "USER": "Usuário",
     "ADMIN": "Administrador",
-    "forgotPasswordEmailSent": "Um email de alteração de senha foi enviado para <0>{{email}}</0>"
+    "forgotPasswordEmailSent": "Um email de alteração de senha foi enviado para <0>{{email}}</0>",
+    "methodNotAllowed": "Método não permitido",
+    "userNotFound": "Usuário não encontrado",
+    "missingToken": "Token não providenciado",
+    "invalidPassword": "Password inválido"
   }
 }
