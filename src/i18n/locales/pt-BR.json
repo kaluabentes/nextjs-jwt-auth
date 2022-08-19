@@ -28,6 +28,11 @@
     "methodNotAllowed": "Método não permitido",
     "userNotFound": "Usuário não encontrado",
     "missingToken": "Token não providenciado",
-    "invalidPassword": "Password inválido"
+    "invalidPassword": "Password inválido",
+    "successfullyChangedPassword": "Password alterado com sucesso, tente <0>{{ signin }}</0>.",
+    "makeLogin": "fazer login",
+    "changePassword": "Alterar sua senha",
+    "changePasswordText": "Para alterar sua senha digite uma nova abaixo.",
+    "changePasswordTokenError": "O token é inválido."
   }
 }

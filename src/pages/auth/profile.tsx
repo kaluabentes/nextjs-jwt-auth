@@ -29,22 +29,24 @@ const Profile = () => {
       <Heading size="2xl" marginBottom={10} fontWeight="semibold">
         {t("profile")}
       </Heading>
-      {isLoadingProfile ? (
-        <>
-          <DataItemLoader />
-          <DataItemLoader />
-          <DataItemLoader />
-        </>
-      ) : (
-        <>
-          <DataItem label={t("name")} value={profile.name} />
-          <DataItem label={t("email")} value={profile.email} />
-          <DataItem
-            label={t("role")}
-            value={<Badge>{t(profile.role)}</Badge>}
-          />
-        </>
-      )}
+      <Box marginBottom={9}>
+        {isLoadingProfile ? (
+          <>
+            <DataItemLoader />
+            <DataItemLoader />
+            <DataItemLoader />
+          </>
+        ) : (
+          <>
+            <DataItem label={t("name")} value={profile.name} />
+            <DataItem label={t("email")} value={profile.email} />
+            <DataItem
+              label={t("role")}
+              value={<Badge>{t(profile.role)}</Badge>}
+            />
+          </>
+        )}
+      </Box>
       <Button onClick={logout} isLoading={isLoggingOut}>
         Logout
       </Button>

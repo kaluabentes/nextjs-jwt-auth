@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next"
+import { Trans, useTranslation } from "react-i18next"
 import {
   Button,
   FormControl,
@@ -30,7 +30,6 @@ const ForgotPassword = () => {
   const formik = useFormik({
     initialValues: {
       email: "",
-      password: "",
     },
     validationSchema: forgotValidationSchema,
     onSubmit: recover,
@@ -55,8 +54,13 @@ const ForgotPassword = () => {
         </Text>
         {isForgotSuccessful ? (
           <Text>
-            Um email de recuperação foi enviado para{" "}
-            <strong>kaluanbentes@gmail.com</strong>
+            <Trans
+              i18nKey="forgotPasswordEmailSent"
+              values={{
+                email: formik.values.email,
+              }}
+              components={[<strong />]}
+            />
           </Text>
         ) : (
           <>
